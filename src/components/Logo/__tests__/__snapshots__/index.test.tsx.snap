@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Logo test case matches snapshot 1`] = `
+<div>
+  <div
+    data-testid="logo"
+  >
+    <img
+      alt="Pokemon"
+      srcset="pokemon-logo.png 1x, pokemon-logo@2x.png 2x, pokemon-logo@3x.png 3x"
+    />
+    <img
+      alt="finder"
+      class="finder"
+      srcset="finder.png, finder@2x.png, finder@3x.png 3x"
+    />
+  </div>
+</div>
+`;
