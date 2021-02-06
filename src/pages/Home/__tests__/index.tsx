@@ -1,24 +1,11 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
-import { Home } from '..';
+import { HomePage } from '../index';
+import { withContext } from '../../../helpers/renderComposites';
+import { userContextMock } from '../../../mocks';
 
-describe('<Home /> test case', () => {
-    it('shows logo', () => {
-        render(<Home />);
-        const logo = screen.getByTestId('logo');
-        expect(logo).toBeInTheDocument();
-    });
-
-    it('renders "lets go" button', () => {
-        render(<Home />);
-
-        const submitButton = screen.getByRole('button', { name: /Let's go!/i });
-        expect(submitButton).toBeInTheDocument();
-    });
-
-    it('renders "Pikachu dabbing" image', () => {
-        render(<Home />);
-        const pokemonImage = screen.getByAltText('Pikachu dabbing');
-        expect(pokemonImage).toBeInTheDocument();
-    });
+describe('<HomePage /> test case', () => {
+    test.todo('initially shows loading');
+    test.todo('redirects to SignUpPage when has no user');
+    test.todo('showns HomePage when has user');
 });

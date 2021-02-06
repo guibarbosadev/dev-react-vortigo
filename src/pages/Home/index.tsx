@@ -1,16 +1,22 @@
 import React from 'react';
-import { Button } from '../../components/Button';
-import { Logo } from '../../components/Logo';
+import { Redirect } from 'react-router-dom';
+import { Loading } from '../../components/Loading';
+import { useUser } from '../../user/user-context';
 import './style.css';
 
-export const Home = () => {
-    return (
-        <div className="wrapper">
-            <Logo />
-            <div className="main">
-                <Button>Let's go!</Button>
-            </div>
-            <img alt="Pikachu dabbing" className="pikachu" srcSet="/images/pikachu.png 1x, /images/pikachu@2x.png 2x, /images/pikachu@3x.png 3x" />
-        </div>
-    );
+export const HomePage = () => {
+    const [isLoading, setIsLoading] = React.useState(true);
+    const { user, getUser } = useUser();
+
+    const attemptToGetUser = React.useCallback(() => {
+        (async () => {
+            setIsLoading(true);
+            await getUser();
+            setIsLoading(false);
+        })();
+    }, []);
+
+    React.useEffect(attemptToGetUser, []);
+
+    return isLoading ? <Loading /> : user ? <div>HomePage</div> : <Redirect to="/sign-up" />;
 };
