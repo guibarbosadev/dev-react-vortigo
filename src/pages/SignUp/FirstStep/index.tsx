@@ -1,4 +1,6 @@
 import React from 'react';
+import { AdvanceButton } from '../../../components/AdvanceButton';
+import './style.css';
 
 export interface IProps {
     onAdvance: (name: string) => void;
@@ -15,13 +17,13 @@ export const FirstStep: React.FC<IProps> = ({ onAdvance }) => {
     }, []);
 
     return (
-        <form className="wrapper" onSubmit={handleSubmit}>
-            <h2>Let's meet each other first?</h2>
+        <form className="signUpWrapper" onSubmit={handleSubmit}>
+            <h2 className="title">Let's meet each other first?</h2>
             <label htmlFor="nameInput">
                 First we need to know your name...
                 <input type="text" id="nameInput" value={name} onChange={handleChange} />
             </label>
-            <button type="submit">Avançar</button>
+            <AdvanceButton />
         </form>
     );
 };

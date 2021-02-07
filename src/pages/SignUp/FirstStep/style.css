@@ -1,0 +1,32 @@
+.signUpWrapper {
+    color: #ffffff;
+    padding: 10px 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signUpWrapper .title {
+    font-weight: normal;
+    transform: translateY(4rem);
+}
+
+.signUpWrapper input {
+    border: none;
+    border-bottom: 2px solid #ffffff;
+    background-color: transparent;
+    padding: 15px 0;
+    color: #ffffff;
+}
+
+.signUpWrapper input:focus {
+    outline: none;
+}
+
+.signUpWrapper label {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}

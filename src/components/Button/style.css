@@ -1,4 +1,4 @@
-button {
+.button {
     background-color: #f81769;
     padding: 8px 20px;
     width: 100%;
@@ -9,8 +9,8 @@ button {
     border-radius: 10px;
 }
 
-button:focus,
-button:active,
-button:hover {
+.button:focus,
+.button:active,
+.button:hover {
     background-color: #e01b63;
 }

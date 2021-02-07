@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { act, render, screen } from '@testing-library/react';
 import { FirstStep, IProps } from '..';
 import userEvent from '@testing-library/user-event';
 
@@ -26,7 +26,9 @@ describe('<FirstStep /> test case', () => {
         const submitButton = screen.getByRole('button');
 
         expect(props.onAdvance).not.toHaveBeenCalled();
-        userEvent.type(nameInput, text);
+        act(() => {
+            userEvent.type(nameInput, text);
+        });
         userEvent.click(submitButton);
         expect(props.onAdvance).toHaveBeenCalled();
     });
