@@ -11,6 +11,10 @@
     padding: 20px 35px;
 }
 
+.wrapper .main .linkButton {
+    width: 100%;
+}
+
 .wrapper .pikachu {
     max-width: 180px;
     margin-left: auto;
