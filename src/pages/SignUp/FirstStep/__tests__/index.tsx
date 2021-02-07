@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 
 describe('<FirstStep /> test case', () => {
     let props: IProps = {
-        onAdvance: () => {}
+        handleSubmit: () => {}
     };
 
     it(`showns "Let's meet each other first?" text`, () => {
@@ -18,18 +18,19 @@ describe('<FirstStep /> test case', () => {
         expect(screen.getByLabelText('First we need to know your name...')).toBeInTheDocument();
     });
 
-    it('calls props.onAdvance', () => {
-        props.onAdvance = jest.fn();
+    it('calls props.handleSubmit', () => {
+        props.handleSubmit = jest.fn();
         render(<FirstStep {...props} />);
         const text = 'Some name';
         const nameInput = screen.getByLabelText('First we need to know your name...');
         const submitButton = screen.getByRole('button');
 
-        expect(props.onAdvance).not.toHaveBeenCalled();
+        expect(props.handleSubmit).not.toHaveBeenCalled();
         act(() => {
             userEvent.type(nameInput, text);
         });
         userEvent.click(submitButton);
-        expect(props.onAdvance).toHaveBeenCalled();
+        expect(props.handleSubmit).toHaveBeenCalledWith(text);
+        expect(props.handleSubmit).toHaveBeenCalledTimes(1);
     });
 });

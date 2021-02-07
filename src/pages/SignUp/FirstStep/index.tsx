@@ -3,21 +3,21 @@ import { AdvanceButton } from '../../../components/AdvanceButton';
 import './style.css';
 
 export interface IProps {
-    onAdvance: (name: string) => void;
+    handleSubmit: (name: string) => void;
 }
 
-export const FirstStep: React.FC<IProps> = ({ onAdvance }) => {
+export const FirstStep: React.FC<IProps> = (props) => {
     const [name, setName] = React.useState('');
-    const handleSubmit = React.useCallback((event: React.FormEvent<HTMLFormElement>) => {
+    const onSubmit = React.useCallback((event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        onAdvance(name);
+        props.handleSubmit(name);
     }, []);
     const handleChange = React.useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
     }, []);
 
     return (
-        <form className="signUpWrapper" onSubmit={handleSubmit}>
+        <form className="signUpWrapper" onSubmit={onSubmit}>
             <h2 className="title">Let's meet each other first?</h2>
             <label htmlFor="nameInput">
                 First we need to know your name...
