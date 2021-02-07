@@ -1,13 +1,13 @@
 import React from 'react';
 import type { User } from './types';
-import { fetchUser, saveUser } from './user-provider';
+import { fetchUser } from './user-provider';
 
-export const UserContext = React.createContext<IUserContext>({ user: null, getUser: async () => {}, hasNoUser: false });
+export const UserContext = React.createContext<IUserContext>({ user: null, getUser: async () => {}, alreadyFetchedUser: false });
 
 export interface IUserContext {
     user: User | null;
     getUser: () => Promise<void>;
-    hasNoUser: boolean;
+    alreadyFetchedUser: boolean;
 }
 
 export function useUser() {
@@ -16,13 +16,13 @@ export function useUser() {
 
 export function UserProvider(props: any) {
     const [user, setUser] = React.useState<User | null>(null);
-    const [hasNoUser, setHasNoUser] = React.useState(false);
+    const [alreadyFetchedUser, setAlreadyFetchedUser] = React.useState(false);
 
     const getUser = async () => {
         setUser(await fetchUser());
-        setHasNoUser(!!user);
+        setAlreadyFetchedUser(true);
     };
-    const value: IUserContext = React.useMemo(() => ({ user, setUser, getUser, hasNoUser: false }), [user, hasNoUser]);
+    const value: IUserContext = React.useMemo(() => ({ user, setUser, getUser, alreadyFetchedUser }), [user, alreadyFetchedUser]);
 
     return <UserContext.Provider value={value} {...props} />;
 }

@@ -6,12 +6,12 @@ import { useUser } from '../user/user-context';
 import { PokemonsPage } from './Pokemons';
 
 export const Routes = () => {
-    const { user, hasNoUser } = useUser();
+    const { user, alreadyFetchedUser } = useUser();
 
     return (
         <Router>
             <Switch>
-                {hasNoUser && <Route path="/sign-up" component={SignUpPage} />}
+                {alreadyFetchedUser && !user && <Route path="/sign-up" component={SignUpPage} />}
                 {user && <Route path="/pokemons" component={PokemonsPage} />}
                 <Route exact path="/" component={HomePage} />
                 <Redirect to="/" />

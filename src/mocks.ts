@@ -9,6 +9,7 @@ export const userContextMock: IUserContext = {
     user: null,
     getUser: async function () {
         this.user = { ...userMock };
+        this.alreadyFetchedUser = true;
     },
-    hasNoUser: false
+    alreadyFetchedUser: true
 };
