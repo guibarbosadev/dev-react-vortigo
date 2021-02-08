@@ -11,10 +11,13 @@ export interface IProps {
 
 export const FirstStep: React.FC<IProps> = (props) => {
     const [name, setName] = React.useState(props.defaultValues?.name || '');
-    const onSubmit = React.useCallback((event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        props.handleSubmit(name);
-    }, []);
+    const onSubmit = React.useCallback(
+        (event: React.FormEvent<HTMLFormElement>) => {
+            event.preventDefault();
+            props.handleSubmit(name);
+        },
+        [name]
+    );
     const handleChange = React.useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
     }, []);

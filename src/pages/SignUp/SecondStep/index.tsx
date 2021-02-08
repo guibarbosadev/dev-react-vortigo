@@ -11,9 +11,15 @@ export interface IProps {
     defaultValues?: User;
 }
 
-export const SecondStep: React.FC<IProps> = ({ defaultValues }) => {
-    const onChange = React.useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {}, []);
+export const SecondStep: React.FC<IProps> = ({ defaultValues, handleSubmit }) => {
     const [pokemonType, setPokemonType] = React.useState<TPokemonType | undefined>(defaultValues?.favoritePokemonType);
+
+    const isValid = React.useMemo(() => {
+        const validPokemonTypes: TPokemonType[] = ['eletric', 'fire', 'normal', 'water'];
+        const isValidPokemonType = validPokemonTypes.includes(pokemonType as TPokemonType);
+        return isValidPokemonType;
+    }, [pokemonType]);
+
     const options = React.useMemo(() => {
         return [
             {
@@ -39,14 +45,28 @@ export const SecondStep: React.FC<IProps> = ({ defaultValues }) => {
         ];
     }, []);
 
+    const onSubmit = React.useCallback(
+        (event: React.FormEvent<HTMLFormElement>) => {
+            event.preventDefault();
+            if (isValid && pokemonType) {
+                handleSubmit(pokemonType);
+            }
+        },
+        [pokemonType, isValid]
+    );
+
     return (
-        <form className="secondStepWrapper">
+        <form className="secondStepWrapper" onSubmit={onSubmit}>
             <h2 className="title">Hello, trainer {defaultValues?.name}!</h2>
             <label htmlFor="pokemonTypeSelect">
                 First we need to know your name...
-                <Select options={options} value={pokemonType} onChange={onChange} />
+                <Select
+                    options={options}
+                    value={pokemonType}
+                    onChange={(event: React.ChangeEvent<HTMLSelectElement>) => setPokemonType(event.target.value as TPokemonType)}
+                />
             </label>
-            <AdvanceButton />
+            <AdvanceButton type="submit" disabled={!isValid} />
         </form>
     );
 };
