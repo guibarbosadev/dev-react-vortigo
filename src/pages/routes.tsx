@@ -13,6 +13,7 @@ export const Routes = () => {
             <Switch>
                 {alreadyFetchedUser && !user && <Route path="/sign-up" component={SignUpPage} />}
                 {user && <Route path="/pokemons" component={PokemonsPage} />}
+                {user && <Route path="/pokemons/:pokemonType" component={PokemonsPage} />}
                 <Route exact path="/" component={HomePage} />
                 <Redirect to="/" />
             </Switch>

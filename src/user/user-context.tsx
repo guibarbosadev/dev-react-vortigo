@@ -1,14 +1,15 @@
 import React from 'react';
 import type { User } from './types';
 import * as provider from './user-provider';
-const initialContextValue: IUserContext = {
+
+const defaultContextValue: IUserContext = {
     user: null,
     getUser: async () => {},
     saveUser: async () => {},
     alreadyFetchedUser: false
 };
 
-export const UserContext = React.createContext<IUserContext>(initialContextValue);
+export const UserContext = React.createContext<IUserContext>(defaultContextValue);
 
 export interface IUserContext {
     user: User | null;
