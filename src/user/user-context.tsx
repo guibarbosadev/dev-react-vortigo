@@ -1,12 +1,19 @@
 import React from 'react';
 import type { User } from './types';
-import { fetchUser } from './user-provider';
+import * as provider from './user-provider';
+const initialContextValue: IUserContext = {
+    user: null,
+    getUser: async () => {},
+    saveUser: async () => {},
+    alreadyFetchedUser: false
+};
 
-export const UserContext = React.createContext<IUserContext>({ user: null, getUser: async () => {}, alreadyFetchedUser: false });
+export const UserContext = React.createContext<IUserContext>(initialContextValue);
 
 export interface IUserContext {
     user: User | null;
     getUser: () => Promise<void>;
+    saveUser: (user: User) => Promise<void>;
     alreadyFetchedUser: boolean;
 }
 
@@ -19,10 +26,14 @@ export function UserProvider(props: any) {
     const [alreadyFetchedUser, setAlreadyFetchedUser] = React.useState(false);
 
     const getUser = async () => {
-        setUser(await fetchUser());
+        setUser(await provider.fetchUser());
         setAlreadyFetchedUser(true);
     };
-    const value: IUserContext = React.useMemo(() => ({ user, setUser, getUser, alreadyFetchedUser }), [user, alreadyFetchedUser]);
+    const saveUser = async (user: User) => {
+        await provider.saveUser(user);
+        setUser(user);
+    };
+    const value: IUserContext = React.useMemo(() => ({ user, setUser, getUser, alreadyFetchedUser, saveUser }), [user, alreadyFetchedUser]);
 
     return <UserContext.Provider value={value} {...props} />;
 }
