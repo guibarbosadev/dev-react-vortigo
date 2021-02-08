@@ -59,7 +59,7 @@ export const SecondStep: React.FC<IProps> = ({ defaultValues, handleSubmit }) =>
         <form className="secondStepWrapper" onSubmit={onSubmit}>
             <h2 className="title">Hello, trainer {defaultValues?.name}!</h2>
             <label htmlFor="pokemonTypeSelect">
-                First we need to know your name...
+                ...now tell us which is your favorite Pokémon type:
                 <Select
                     options={options}
                     value={pokemonType}
