@@ -1,4 +1,4 @@
-.signUpWrapper {
+.firstStepWrapper {
     color: #ffffff;
     padding: 10px 20px;
     height: 100%;
@@ -7,12 +7,12 @@
     align-items: center;
 }
 
-.signUpWrapper .title {
+.firstStepWrapper .title {
     font-weight: normal;
     transform: translateY(4rem);
 }
 
-.signUpWrapper input {
+.firstStepWrapper input {
     border: none;
     border-bottom: 2px solid #ffffff;
     background-color: transparent;
@@ -20,11 +20,11 @@
     color: #ffffff;
 }
 
-.signUpWrapper input:focus {
+.firstStepWrapper input:focus {
     outline: none;
 }
 
-.signUpWrapper label {
+.firstStepWrapper label {
     flex-grow: 1;
     display: flex;
     justify-content: center;
