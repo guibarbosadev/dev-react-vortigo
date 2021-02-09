@@ -1,9 +1,18 @@
 {
     "extends": "@snowpack/app-scripts-react",
-    "plugins": ["@snowpack/plugin-sass", ["@snowpack/plugin-build-script", { "cmd": "postcss", "input": [".css"], "output": [".css"] }]],
+    "plugins": [
+        "@snowpack/plugin-sass",
+        ["@snowpack/plugin-build-script", { "cmd": "postcss", "input": [".css"], "output": [".css"] }],
+        [
+            "snowpack-plugin-baseurl-handler",
+            {
+                "exts": [".html", ".js", ".jsx", ".css"],
+                "baseUrl": "/dev-react-vortigo"
+            }
+        ]
+    ],
     "exclude": ["**/node_modules/**/*", "**/__tests__/**/*"],
     "buildOptions": {
-        "baseUrl": "/dev-react-vortigo",
         "out": "dist"
     }
 }

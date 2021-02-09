@@ -8,10 +8,10 @@ export const Logo = props => {
     id: "logo"
   }, props), /*#__PURE__*/React.createElement("img", {
     alt: "Pokemon",
-    srcSet: "./images/pokemon-logo.png 1x, ./images/pokemon-logo@2x.png 2x, ./images/pokemon-logo@3x.png 3x"
+    srcSet: "/dev-react-vortigo/images/pokemon-logo.png 1x, /dev-react-vortigo/images/pokemon-logo@2x.png 2x, /dev-react-vortigo/images/pokemon-logo@3x.png 3x"
   }), /*#__PURE__*/React.createElement("img", {
     alt: "finder",
     className: "finder",
-    srcSet: "./images/finder.png 1x, ./images/finder@2x.png, ./images/finder@3x.png 3x"
+    srcSet: "/dev-react-vortigo/images/finder.png 1x, /dev-react-vortigo/images/finder@2x.png, /dev-react-vortigo/images/finder@3x.png 3x"
   }));
 };
