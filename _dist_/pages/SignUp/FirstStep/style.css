@@ -1,0 +1,32 @@
+.firstStepWrapper {
+    color: #ffffff;
+    padding: 10px 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.firstStepWrapper .title {
+    font-weight: normal;
+    transform: translateY(4rem);
+}
+
+.firstStepWrapper input {
+    border: none;
+    border-bottom: 2px solid #ffffff;
+    background-color: transparent;
+    padding: 15px 0;
+    color: #ffffff;
+}
+
+.firstStepWrapper input:focus {
+    outline: none;
+}
+
+.firstStepWrapper label {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
