@@ -1,20 +1,20 @@
 import React from 'react';
-import type { IPokemonType } from './types';
+import type { IPokemon, IPokemonType } from './types';
 import * as provider from './pokemon-provider';
 
 export const defaultContextValue: IPokemonContext = {
-    types: [],
-    didLoad: false,
-    getPokemonTypes: async () => {
-        console.log('hihihi');
-    }
+    pokemonTypes: [],
+    pokemons: [],
+    getPokemonTypes: async () => {},
+    getPokemons: async () => {}
 };
 export const PokemonContext = React.createContext(defaultContextValue);
 
 export interface IPokemonContext {
-    types: IPokemonType[];
-    didLoad: boolean;
+    pokemonTypes: IPokemonType[];
+    pokemons: IPokemon[];
     getPokemonTypes: () => Promise<void>;
+    getPokemons: () => Promise<void>;
 }
 
 export function usePokemon() {
@@ -22,15 +22,17 @@ export function usePokemon() {
 }
 
 export function PokemonProvider(props: any) {
-    const [types, setTypes] = React.useState<IPokemonType[]>([]);
-    const [didLoad, setDidLoad] = React.useState(false);
+    const [pokemonTypes, setPokemonTypes] = React.useState<IPokemonType[]>([]);
+    const [pokemons, setPokemons] = React.useState<IPokemon[]>([]);
     const getPokemonTypes = React.useCallback(async () => {
-        console.log('here i am');
         const fetchedTypes = await provider.fetchPokemonTypes();
-        setTypes(fetchedTypes);
-        setDidLoad(true);
+        setPokemonTypes(fetchedTypes);
     }, []);
-    const value = React.useMemo(() => ({ types, getPokemonTypes, didLoad }), [types, didLoad]);
+    const getPokemons = React.useCallback(async () => {
+        const fetchedPokemons = await provider.fetchPokemons();
+        setPokemons(fetchedPokemons);
+    }, []);
+    const value = React.useMemo<IPokemonContext>(() => ({ pokemonTypes, getPokemonTypes, getPokemons, pokemons }), [pokemonTypes, pokemons]);
 
     return <PokemonContext.Provider value={value} {...props} />;
 }

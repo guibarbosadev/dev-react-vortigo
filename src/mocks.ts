@@ -11,5 +11,8 @@ export const userContextMock: IUserContext = {
         this.user = { ...userMock };
         this.alreadyFetchedUser = true;
     },
+    saveUser: async function () {
+        this.alreadyFetchedUser = true;
+    },
     alreadyFetchedUser: true
 };

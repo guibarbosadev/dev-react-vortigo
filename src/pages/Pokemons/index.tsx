@@ -1,25 +1,35 @@
 import React from 'react';
-import { usePokemon } from '../../pokemon/pokemon-context';
-import { PokemonTypeSelector } from './PokemonTypeSelector/index';
 import { Loading } from '../../components/Loading';
+import { usePokemon } from '../../pokemon/pokemon-context';
+import { PokemonList } from './PokemonList';
+import { PokemonTypeSelector } from './PokemonTypeSelector/index';
 import './style.css';
-import { useParams } from 'react-router-dom';
 
 export const PokemonsPage = () => {
-    const [isLoading, setIsLoading] = React.useState(false);
-    const { types, getPokemonTypes } = usePokemon();
-    const { pokemonType } = useParams<{ pokemonType: string }>();
-    const attemptToGetPokemonTypes = React.useCallback(() => {
-        console.log('dsasad');
-        (async () => {
-            setIsLoading(true);
-            console.log('heyy');
-            await getPokemonTypes();
-            setIsLoading(false);
-        })();
+    const [isLoadingPokemonTypes, setIsLoadingPokemonTypes] = React.useState(true);
+    const [isLoadingPokemons, setIsLoadingPokemons] = React.useState(true);
+    const { pokemons, pokemonTypes, getPokemonTypes, getPokemons } = usePokemon();
+    const attemptToGetPokemonTypes = React.useCallback(async () => {
+        setIsLoadingPokemonTypes(true);
+        await getPokemonTypes();
+        setIsLoadingPokemonTypes(false);
+    }, []);
+    const attemptToGetPokemons = React.useCallback(async () => {
+        setIsLoadingPokemons(true);
+        await getPokemons();
+        setIsLoadingPokemons(false);
+    }, []);
+    const getPokemonData = React.useCallback(() => {
+        attemptToGetPokemonTypes();
+        attemptToGetPokemons();
     }, []);
 
-    React.useEffect(attemptToGetPokemonTypes, []);
+    React.useEffect(getPokemonData, []);
 
-    return <div className="pokemons">{isLoading ? <Loading /> : <PokemonTypeSelector pokemonTypes={types} />}</div>;
+    return (
+        <div className="pokemons">
+            {isLoadingPokemonTypes ? <Loading /> : <PokemonTypeSelector pokemonTypes={pokemonTypes} />}
+            {isLoadingPokemons ? <Loading /> : <PokemonList pokemons={pokemons} />}
+        </div>
+    );
 };

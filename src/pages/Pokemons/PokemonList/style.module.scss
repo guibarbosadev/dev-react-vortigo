@@ -1,0 +1,23 @@
+.wrapper {
+    display: grid;
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    ul.pokemonList {
+        list-style-type: none;
+
+        li {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            column-gap: 20px;
+            align-items: center;
+        }
+
+        img {
+            height: 50px;
+        }
+    }
+}
