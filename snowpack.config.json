@@ -1,4 +1,8 @@
 {
     "extends": "@snowpack/app-scripts-react",
-    "plugins": ["@snowpack/plugin-sass", ["@snowpack/plugin-build-script", { "cmd": "postcss", "input": [".css"], "output": [".css"] }]]
+    "plugins": ["@snowpack/plugin-sass", ["@snowpack/plugin-build-script", { "cmd": "postcss", "input": [".css"], "output": [".css"] }]],
+    "exclude": ["**/node_modules/**/*", "**/__tests__/**/*"],
+    "buildOptions": {
+        "out": "dist"
+    }
 }

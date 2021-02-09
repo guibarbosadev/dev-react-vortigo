@@ -1,0 +1,24 @@
+.secondStepWrapper {
+    align-items: center;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 10px 20px;
+}
+
+.secondStepWrapper .title {
+    font-weight: normal;
+    transform: translateY(4rem);
+}
+
+.secondStepWrapper label {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.secondStepWrapper label select {
+    width: 100%;
+}
