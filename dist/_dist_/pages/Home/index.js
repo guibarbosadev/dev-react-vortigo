@@ -38,6 +38,6 @@ export const HomePage = () => {
   }, /*#__PURE__*/React.createElement(Button, null, "Let's go!"))), /*#__PURE__*/React.createElement("img", {
     alt: "Pikachu dabbing",
     className: "pikachu",
-    srcSet: "/images/pikachu.png 1x, /images/pikachu@2x.png 2x, /images/pikachu@3x.png 3x"
+    srcSet: "./images/pikachu.png 1x, ./images/pikachu@2x.png 2x, ./images/pikachu@3x.png 3x"
   }));
 };

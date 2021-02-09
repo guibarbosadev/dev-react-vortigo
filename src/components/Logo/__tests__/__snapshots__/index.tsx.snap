@@ -8,12 +8,12 @@ exports[`<Logo test case matches snapshot 1`] = `
   >
     <img
       alt="Pokemon"
-      srcset="/images/pokemon-logo.png 1x, /images/pokemon-logo@2x.png 2x, /images/pokemon-logo@3x.png 3x"
+      srcset="./images/pokemon-logo.png 1x, ./images/pokemon-logo@2x.png 2x, ./images/pokemon-logo@3x.png 3x"
     />
     <img
       alt="finder"
       class="finder"
-      srcset="/images/finder.png 1x, /images/finder@2x.png, /images/finder@3x.png 3x"
+      srcset="./images/finder.png 1x, ./images/finder@2x.png, ./images/finder@3x.png 3x"
     />
   </div>
 </div>

@@ -40,7 +40,7 @@ export const HomePage = () => {
                     <Button>Let's go!</Button>
                 </Link>
             </div>
-            <img alt="Pikachu dabbing" className="pikachu" srcSet="/images/pikachu.png 1x, /images/pikachu@2x.png 2x, /images/pikachu@3x.png 3x" />
+            <img alt="Pikachu dabbing" className="pikachu" srcSet="./images/pikachu.png 1x, ./images/pikachu@2x.png 2x, ./images/pikachu@3x.png 3x" />
         </div>
     );
 };
